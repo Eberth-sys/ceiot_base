@@ -41,11 +41,17 @@ app.use(express.static('spa/static'));
 
 const PORT = 8080;
 
-app.post('/measurement', function (req, res) {
--       console.log("device id    : " + req.body.id + " key         : " + req.body.key + " temperature : " + req.body.t + " humidity    : " + req.body.h + " pressure    : " + req.body.p);	 // Añadi pressure.
-    const {insertedId} = insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h, p: req.body.p }); //Añadi p: req.body.p
-	res.send("received measurement into " +  insertedId);
+app.post('/measurement', async function (req, res) {
+    console.log("device id    : " + req.body.id + " temperature : " + req.body.t + " humidity    : " + req.body.h + " pressure    : " + req.body.p); // Añadí pressure.
+    try {  // Agrego el try para verificar error que puedan pasar.
+        const insertedId = await insertMeasurement({ id: req.body.id, t: req.body.t, h: req.body.h, p: req.body.p }); //Añadí p: req.body.p . -- Agregue el await para esperar el proceso.
+        res.send("received measurement into " + insertedId);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error inserting measurement");
+    }
 });
+
 
 app.post('/device', function (req, res) {
 	console.log("device id    : " + req.body.id + " name        : " + req.body.n + " key         : " + req.body.k );
