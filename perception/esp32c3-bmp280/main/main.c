@@ -30,7 +30,9 @@
 
 static const char *TAG = "temp_collector";
 
-static char *BODY = "id="DEVICE_ID"&t=%0.2f&h=%0.2f";
+//static char *BODY = "id="DEVICE_ID"&t=%0.2f&h=%0.2f"; ## Comento la linea original.
+static char *BODY = "id="DEVICE_ID"&t=%0.2f&h=%0.2f&p=%0.2f"; // Agrego  la linea  moficiada 
+
 
 static char *REQUEST_POST = "POST "WEB_PATH" HTTP/1.0\r\n"
     "Host: "API_IP_PORT"\r\n"
@@ -76,7 +78,9 @@ static void http_get_task(void *pvParameters)
             ESP_LOGI(TAG, "Pressure: %.2f Pa, Temperature: %.2f C", pressure, temperature);
 //            if (bme280p) {
                 ESP_LOGI(TAG,", Humidity: %.2f\n", humidity);
-		sprintf(body, BODY, temperature , humidity );
+		//sprintf(body, BODY, temperature , humidity ); ### Linea original
+		sprintf(body, BODY, temperature , humidity, pressure ); // Linea modificada  ########################
+
                 sprintf(send_buf, REQUEST_POST, (int)strlen(body),body );
 //	    } else {
 //                sprintf(send_buf, REQUEST_POST, temperature , 0);
