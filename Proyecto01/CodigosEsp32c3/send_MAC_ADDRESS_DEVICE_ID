@@ -1,0 +1,54 @@
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+// Configuración de WiFi y otros parámetros
+const char* ssid = "1309";
+const char* password = "Pegatenoma.";
+const char* serverUrl = "http://192.168.255.196:8080/measurement";
+
+void setup() {
+    Serial.begin(115200);
+    WiFi.begin(ssid, password);
+
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(1000);
+        Serial.print(".");
+    }
+    
+    Serial.println("Connected to WiFi");
+
+    String macAddress = WiFi.macAddress();  // Obtener la dirección MAC
+    Serial.println("MAC Address: " + macAddress);
+
+    // Define tus variables de temperatura, humedad y presión
+    float temperature = 22.5;  // Reemplaza con tu valor real
+    float humidity = 55.0;     // Reemplaza con tu valor real
+    float pressure = 1013.25;  // Reemplaza con tu valor real
+
+    // Construir el payload
+    String payload = "id=" + macAddress + "&t=" + String(temperature) + "&h=" + String(humidity) + "&p=" + String(pressure);
+
+    // Enviar la solicitud POST al servidor
+    if (WiFi.status() == WL_CONNECTED) {
+        HTTPClient http;
+        http.begin(serverUrl);
+        http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        int httpResponseCode = http.POST(payload);
+        
+        if (httpResponseCode > 0) {
+            String response = http.getString();
+            Serial.println("Response: " + response);
+        } else {
+            Serial.println("Error in HTTP request");
+        }
+
+        http.end();
+    } else {
+        Serial.println("Error in WiFi connection");
+    }
+}
+
+void loop() {
+    // No es necesario hacer nada en el loop para este ejemplo
+}
