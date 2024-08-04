@@ -28,7 +28,7 @@ async function getDatabase() {
 }
 
 async function insertMeasurement(message) {
-    try {
+    try { // Manejo de errores.
         console.log("INGRESO DEL MENSAJE", message); // Agrega esta línea para depurar
         const result = await database.collection(collectionName).insertOne(message);
         console.log("Resultado:", result); // Agrega esta línea para depurar
@@ -53,8 +53,8 @@ app.use(express.static('spa/static'));
 const PORT = 8080;
 
 app.post('/measurement', async function (req, res) { //agrego la funcion await para evitar el mensaje [object Promise]% 
-    -       console.log("device id    : " + req.body.id + " key         : " + req.body.key + " temperature : " + req.body.t + " humidity    : " + req.body.h + " pressure    : " + req.body.p);	 // Añadi pressure.
-        const insertedId = await insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h, p: req.body.p }); //Añadi p: req.body.p y la func await.
+    -       console.log("device id    : " + req.body.id + " key         : " + req.body.key + " temperature : " + req.body.t + " humidity    : " + req.body.h + " pressure : " + req.body.p + " error : " + req.body.error);	 // Añadi pressure para del desafio 1 y error para el desafio 02
+        const insertedId = await insertMeasurement({id:req.body.id, t:req.body.t, h:req.body.h, p: req.body.p, error: req.body.error  }); //Añadi p: req.body.p y la func await. para el dsafio 02 añadi error: req.body.error 
         // quito tambien los {} de inserted para evitar el mensaje undefined% 
         res.send("received measurement into " +  insertedId);
     });
