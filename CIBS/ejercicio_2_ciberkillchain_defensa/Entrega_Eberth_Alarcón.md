@@ -52,7 +52,7 @@ Para mitigar este riesgo, configuro un **firewall con reglas estrictas**, bloque
 
 *"Este análisis de tráfico muestra conexiones que podrían estar relacionadas con un servidor C2 malicioso. La identificación de estos patrones permite prevenir la comunicación con servidores de control remoto y bloquear posibles comandos del atacante."*  
 
-[![exploitnetwork.png](https://i.postimg.cc/PJd032Gs/exploitnetwork.png)](https://postimg.cc/JDdTt34P)
+[![firewall.png](https://i.postimg.cc/XJjgthv8/firewall.png)](https://postimg.cc/zLQWgxKb)
 
 ## **3️⃣ Exploitation (Explotación de la Vulnerabilidad)**  
 
