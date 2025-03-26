@@ -54,7 +54,6 @@ Para mitigar este riesgo, configuro un **firewall con reglas estrictas**, bloque
 
 [![exploitnetwork.png](https://i.postimg.cc/PJd032Gs/exploitnetwork.png)](https://postimg.cc/JDdTt34P)
 
-
 ## **3️⃣ Exploitation (Explotación de la Vulnerabilidad)**  
 
 El atacante intentará explotar vulnerabilidades en el sistema para modificar paquetes y manipular la información transmitida. Para prevenir esto, **valido la integridad de los paquetes enviados y recibidos** en la red, asegurando que no hayan sido alterados por un tercero.  
