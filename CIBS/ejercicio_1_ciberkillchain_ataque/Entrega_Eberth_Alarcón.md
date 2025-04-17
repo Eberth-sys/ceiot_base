@@ -19,8 +19,9 @@ El presente ejercicio muestra un ataque basado en la metodología Cyber Kill Cha
       - [Código de Manipulación BLE en Scapy](#código-de-manipulación-ble-en-scapy)
     - [3️⃣ **Delivery (Entrega del Ataque)**](#3️⃣-delivery-entrega-del-ataque)
     - [4️⃣ **Explotación (Explotación de la Vulnerabilidad)**](#4️⃣-explotación-explotación-de-la-vulnerabilidad)
-    - [5️⃣ **Command \& Control (C2)**](#5️⃣-command--control-c2)
-    - [6️⃣ **Actions on Objectives (Acción sobre el Objetivo)**](#6️⃣-actions-on-objectives-acción-sobre-el-objetivo)
+    - [5️⃣ **Installation**](#5️⃣-installation)
+    - [6️⃣ **Command \& Control (C2)**](#6️⃣-command--control-c2)
+    - [7️⃣ **Actions on Objectives (Acción sobre el Objetivo)**](#7️⃣-actions-on-objectives-acción-sobre-el-objetivo)
   - [🔀 **Diagrama de Flujos del Ataque**](#-diagrama-de-flujos-del-ataque)
   - [👤 **Autor**](#-autor)
 
@@ -138,8 +139,12 @@ Explotando la vulnerabilidad de falta de verificación en los paquetes manipulad
 2. **Generar ruido falso**, saturando la base de datos con eventos irrelevantes y disminuyendo la capacidad de respuesta del sistema de monitoreo.
 
 ---
+### 5️⃣ **Installation**
 
-### 5️⃣ **Command & Control (C2)**
+- No aplica
+---
+
+### 6️⃣ **Command & Control (C2)**
 
 **Técnicas utilizadas:**
 
@@ -159,7 +164,7 @@ Automatizo mi ataque con un script en Python que me permite:
 
 ---
 
-### 6️⃣ **Actions on Objectives (Acción sobre el Objetivo)**
+### 7️⃣ **Actions on Objectives (Acción sobre el Objetivo)**
 
 **Técnicas utilizadas:**
 
@@ -198,19 +203,19 @@ aireplay-ng --deauth 100 -a XX:XX:XX:XX:XX:XX -c YY:YY:YY:YY:YY:YY wlan0mon
 ## 🔀 **Diagrama de Flujos del Ataque**
 
 ```
-1. [Objetivo] → [Escaneo Wi-Fi]
+1. [Objetivo + Reconocimiento] → Escaneo Wi-Fi con Wireshark y análisis de red
          ⬇
-2. [Reconocimiento - Wireshark]
+2. [Weaponization - Fabricación de alertas BLE falsas]
          ⬇
-3. [Weaponization - BLE Fake Alerts]
+3. [Delivery - Intercepción y manipulación de tráfico]
          ⬇
-4. [Delivery - Intercepción de tráfico]
+4. [Explotación - Ocultamiento de alertas y ruido falso]
          ⬇
-5. [Explotación - Ocultar alertas]
+5. [Installation - No aplica]
          ⬇
-6. [C2 - Automatización del ataque]
+6. [C2 - Automatización y control remoto del ataque]
          ⬇
-7. [Acción - Evil Twin + Desautenticación]
+7. [Acción sobre el objetivo - Evil Twin + Ataques de desautenticación]
 ```
 
 ---
