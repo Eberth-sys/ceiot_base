@@ -11,33 +11,31 @@ El presente ejercicio muestro el proceso de un ataque basado en la metodología 
 - [**Ejercicio Cyber Kill Chain – Ataque**](#ejercicio-cyber-kill-chain--ataque)
   - [🔍 **Descripción**](#-descripción)
   - [📑 **Índice**](#-índice)
-  - [🔧 **Sistema IoT**](#-sistema-iot)
-  - [🎯 **Objetivo del Ataque**](#-objetivo-del-ataque)
-  - [💥 **Resolución del Ataque: Cyber Kill Chain**](#-resolución-del-ataque-cyber-kill-chain)
+  - [**Sistema IoT**](#sistema-iot)
+  - [**Objetivo del Ataque**](#objetivo-del-ataque)
+  - [**Resolución del Ataque: Cyber Kill Chain**](#resolución-del-ataque-cyber-kill-chain)
     - [1️⃣ **Reconnaissance (Reconocimiento)**](#1️⃣-reconnaissance-reconocimiento)
     - [2️⃣ **Weaponization (Armado del Ataque)**](#2️⃣-weaponization-armado-del-ataque)
-      - [Código de Manipulación BLE en Scapy](#código-de-manipulación-ble-en-scapy)
     - [3️⃣ **Delivery (Entrega del Ataque)**](#3️⃣-delivery-entrega-del-ataque)
     - [4️⃣ **Explotación (Explotación de la Vulnerabilidad)**](#4️⃣-explotación-explotación-de-la-vulnerabilidad)
     - [5️⃣ **Installation (Instalación) – No Aplica**](#5️⃣-installation-instalación--no-aplica)
-  - [En mi ataque no fue necesario instalar malware ni modificar los ESP32 o el sistema WIFI-SISTEM-IOT. Todo se ejecutó externamente manipulando el tráfico Wi-Fi y BLE.](#en-mi-ataque-no-fue-necesario-instalar-malware-ni-modificar-los-esp32-o-el-sistema-wifi-sistem-iot-todo-se-ejecutó-externamente-manipulando-el-tráfico-wi-fi-y-ble)
     - [6️⃣ **Command \& Control (C2)**](#6️⃣-command--control-c2)
     - [7️⃣ **Actions on Objectives (Acción sobre el Objetivo)**](#7️⃣-actions-on-objectives-acción-sobre-el-objetivo)
   - [🔀 **Diagrama de Flujos del Ataque**](#-diagrama-de-flujos-del-ataque)
   - [👤 **Autor**](#-autor)
 
 
-## 🔧 **Sistema IoT**
+##  **Sistema IoT**
 
 El sistema **WIFI-SISTEM-IOT** es una solución de seguridad enfocada en la detección de ataques de desautenticación en redes Wi-Fi. A través de dispositivos ESP32, monitorea el tráfico de la red y muestra en tiempo real las alertas de actividad sospechosa en una interfaz gráfica, permitiendo a los administradores reaccionar ante posibles amenazas.
 
 
-## 🎯 **Objetivo del Ataque**
+##  **Objetivo del Ataque**
 
 Para ejecutar mi ataque, seguiré las fases de la Cyber Kill Chain con el fin de evadir la detección del sistema y mantener una persistencia en la ejecución de ataques de desautenticación sin generar alertas que revelen mi actividad. Una vez que los dispositivos legítimos sean expulsados de la red, estableceré un punto de acceso malicioso (Evil Twin) que imitará la identidad del access point original. Esto me permitirá engañar a los dispositivos desconectados para que se unan automáticamente a mi red, donde podré interceptar su tráfico en busca de credenciales de acceso, datos sensibles o incluso manipular sus conexiones. Con este control total sobre la red comprometida, podré desviar información crítica, interrumpir el servicio legítimo e incluso preparar futuras infiltraciones con mayor facilidad.
 
 
-## 💥 **Resolución del Ataque: Cyber Kill Chain**
+##  **Resolución del Ataque: Cyber Kill Chain**
 
 ### 1️⃣ **Reconnaissance (Reconocimiento)**
 
@@ -77,7 +75,7 @@ Descubro que las comunición de los ESP32 se transmiten en **texto plano** o sin
 
 Decido desarrollar un **script en Python con Scapy** para generar respuestas BLE falsas y modificar los reportes enviados al sistema de detección, asegurando que las alertas reales sean suprimidas o alteradas.
 
-#### Código de Manipulación BLE en Scapy
+**Código de Manipulación BLE en Scapy**
 
 ```python
 from scapy.all import *
@@ -140,9 +138,11 @@ Explotando la vulnerabilidad de falta de verificación en los paquetes manipulad
 2. **Generar ruido falso**, saturando la base de datos con eventos irrelevantes y disminuyendo la capacidad de respuesta del sistema de monitoreo.
 
 ---
+
 ### 5️⃣ **Installation (Instalación) – No Aplica**
 
-En mi ataque no fue necesario instalar malware ni modificar los ESP32 o el sistema WIFI-SISTEM-IOT. Todo se ejecutó externamente manipulando el tráfico Wi-Fi y BLE. 
+Este paso no fue necesario. No se instaló malware ni se modificaron los ESP32 o el sistema `WIFI-SISTEM-IOT`. Todo el ataque se ejecutó desde el exterior, manipulando únicamente el tráfico Wi-Fi y BLE.
+
 ---
 
 ### 6️⃣ **Command & Control (C2)**
