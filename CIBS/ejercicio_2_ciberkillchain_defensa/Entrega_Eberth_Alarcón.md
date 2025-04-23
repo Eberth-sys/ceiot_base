@@ -14,7 +14,9 @@
   - [**3️⃣ Exploitation (Explotación de la Vulnerabilidad)**](#3️⃣-exploitation-explotación-de-la-vulnerabilidad)
   - [**4️⃣ Delivery (Entrega del Ataque)**](#4️⃣-delivery-entrega-del-ataque)
   - [**5️⃣ Weaponization (Armado del Ataque)**](#5️⃣-weaponization-armado-del-ataque)
-  - [📌 **Conclusión**](#-conclusión)
+  - [**6️⃣ Reconocimiento**](#6️⃣-reconocimiento)
+  - [**7️⃣ Acceso Inicial**](#7️⃣-acceso-inicial)
+  - [**Conclusión**](#conclusión)
   - [**👨‍💻 Autor**](#-autor)
    
 
@@ -44,7 +46,7 @@ En esta imagen se representa un ataque Evil Twin, donde un atacante crea un punt
 
 Para detectar si un atacante ha logrado establecer un canal de comunicación con un dispositivo comprometido, **analizo el tráfico de red en busca de conexiones inusuales**. Cualquier dispositivo que envíe tráfico periódicamente a un servidor desconocido o que muestre un **aumento repentino en solicitudes anómalas** podría estar siendo controlado remotamente.  
 
-En particular, monitorizo el comportamiento de los **ESP32**, verificando si hay conexiones a direcciones IP no autorizadas o cambios en sus patrones de comunicación. Una **alteración en la frecuencia de paquetes** o conexiones repetidas a dominios externos puede ser una indicación clara de que un atacante ha tomado el control.  
+En particular, monitorizo el comportamiento de los ESP32, verificando si hay conexiones a direcciones IP no autorizadas o cambios en sus patrones de comunicación. Una **alteración en la frecuencia de paquetes** o conexiones repetidas a dominios externos puede ser una indicación clara de que un atacante ha tomado el control.  
 
 Para mitigar este riesgo, configuro un **firewall con reglas estrictas**, bloqueando automáticamente las conexiones salientes a servidores no identificados. También implemento un **sistema de detección y prevención de intrusos (IDS/IPS) como Suricata o Snort**, que genera alertas en caso de tráfico sospechoso o intento de exfiltración de datos.  
 
@@ -104,13 +106,19 @@ Además, monitorizo **el firmware de los ESP32**, asegurándome de que no haya m
 
 ![BLE Attack](https://i.postimg.cc/KcLY9w60/5.png)  
 
+## **6️⃣ Reconocimiento**  
 
+En este caso no considero que el atacante haya necesitado una fase de reconocimiento avanzada, ya que el SSID de la red es público y no requiere escaneo profundo. Ahora bien, como medida preventiva, monitoreo señales de escaneo activas en la red con WIDS y aplico segmentación para limitar la exposición de dispositivos críticos.
 
-## 📌 **Conclusión**  
+## **7️⃣ Acceso Inicial**  
 
-Este análisis demuestra que una **defensa bien estructurada y en capas** puede prevenir ataques antes de que comprometan la seguridad del sistema **WIFI-SISTEM-IOT**, con las medidas adecuadas, puede detectar intentos de manipulación, bloquear tráfico malicioso y asegurar que solo dispositivos autorizados puedan comunicarse.  
+Tampoco identifico una fase de acceso inicial tradicional, ya que el atacante no compromete credenciales ni dispositivos directamente. En su lugar, simula un punto de acceso para engañar a los dispositivos. Para prevenir esto, aplico autenticación WPA3-SAE y desactivo la conexión automática a redes abiertas en equipos sensibles.
 
-Implementando estas estrategias, logramos:  
+## **Conclusión**  
+
+Con este análisis demuestro que con una defensa bien estructurada y en capas se puede prevenir ataques antes de que comprometan la seguridad del sistema WIFI-SISTEM-IOT, con las medidas adecuadas, puede detectar intentos de manipulación, bloquear tráfico malicioso y asegurar que solo dispositivos autorizados puedan comunicarse.  
+
+Implementando estas estrategias, me permite:  
 - **Detectar intentos de escaneo y manipulación en tiempo real.**  
 - **Prevenir ataques de Evil Twin y exfiltración de datos.**  
 - **Proteger la integridad y la disponibilidad de la red.**  

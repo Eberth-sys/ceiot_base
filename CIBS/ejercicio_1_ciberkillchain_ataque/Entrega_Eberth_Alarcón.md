@@ -3,7 +3,7 @@
 
 ## 🔍 **Descripción**
 
-El presente ejercicio muestra un ataque basado en la metodología Cyber Kill Chain, enfocado en vulnerar un sistema IoT (**WIFI-SISTEM-IOT**) que detecta ataques de desautenticación en redes Wi-Fi a través de dispositivos ESP32.
+El presente ejercicio muestro el proceso de un ataque basado en la metodología Cyber Kill Chain, enfocado en vulnerar un sistema IoT (**WIFI-SISTEM-IOT**) que detecta ataques de desautenticación en redes Wi-Fi a través de dispositivos ESP32.
 
 
 ## 📑 **Índice**
@@ -19,7 +19,8 @@ El presente ejercicio muestra un ataque basado en la metodología Cyber Kill Cha
       - [Código de Manipulación BLE en Scapy](#código-de-manipulación-ble-en-scapy)
     - [3️⃣ **Delivery (Entrega del Ataque)**](#3️⃣-delivery-entrega-del-ataque)
     - [4️⃣ **Explotación (Explotación de la Vulnerabilidad)**](#4️⃣-explotación-explotación-de-la-vulnerabilidad)
-    - [5️⃣ **Installation**](#5️⃣-installation)
+    - [5️⃣ **Installation (Instalación) – No Aplica**](#5️⃣-installation-instalación--no-aplica)
+  - [En mi ataque no fue necesario instalar malware ni modificar los ESP32 o el sistema WIFI-SISTEM-IOT. Todo se ejecutó externamente manipulando el tráfico Wi-Fi y BLE.](#en-mi-ataque-no-fue-necesario-instalar-malware-ni-modificar-los-esp32-o-el-sistema-wifi-sistem-iot-todo-se-ejecutó-externamente-manipulando-el-tráfico-wi-fi-y-ble)
     - [6️⃣ **Command \& Control (C2)**](#6️⃣-command--control-c2)
     - [7️⃣ **Actions on Objectives (Acción sobre el Objetivo)**](#7️⃣-actions-on-objectives-acción-sobre-el-objetivo)
   - [🔀 **Diagrama de Flujos del Ataque**](#-diagrama-de-flujos-del-ataque)
@@ -139,9 +140,9 @@ Explotando la vulnerabilidad de falta de verificación en los paquetes manipulad
 2. **Generar ruido falso**, saturando la base de datos con eventos irrelevantes y disminuyendo la capacidad de respuesta del sistema de monitoreo.
 
 ---
-### 5️⃣ **Installation**
+### 5️⃣ **Installation (Instalación) – No Aplica**
 
-- No aplica
+En mi ataque no fue necesario instalar malware ni modificar los ESP32 o el sistema WIFI-SISTEM-IOT. Todo se ejecutó externamente manipulando el tráfico Wi-Fi y BLE. 
 ---
 
 ### 6️⃣ **Command & Control (C2)**
